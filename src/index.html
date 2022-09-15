@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <h1>언어</h1>
+        <select id="language-input" class="form-select">
+          <option value="ko">ko</option>
+          <option value="en" selected>en</option>
+        </select>
+      </div>
+  
+      <div class="row">
+        <h1>번역 원문</h1>
+        <textarea id="message-input" class="form-textarea" cols="30" rows="10">
+{name} 이 입장했습니다.
+</textarea>
+      </div>
+  
+      <div class="row">
+        <h1>변수</h1>
+        <div id="variable-root"></div>
+      </div>
+
+      <div class="row">
+        <h1>결과</h1>
+        <div id="result-root"></div>
+      </div>
+    </div>
+  </body>
+</html>
