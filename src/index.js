@@ -13,6 +13,13 @@ const $resultRoot = document.getElementById('result-root');
 $messageInput.addEventListener('input', showResult);
 $languageInput.addEventListener('change', showResult);
 
+const params = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, prop) => searchParams.get(prop),
+});
+
+window.params = params;
+
+
 function showResult() {
   const lang = $languageInput.value;
   const value = $messageInput.value;
@@ -70,13 +77,12 @@ function showResult() {
           $input.addEventListener('input', () => {
             vars[arg.arg] = $input.value || '';
             $resultRoot.innerHTML = fn(vars);
-            delete vars[arg.arg];
-            console.log(vars)
           });
           break;
 
         case 'function':
           switch (arg.key) {
+            case 'time':
             case 'date':
               var $input = document.createElement('input');
               $input.classList.add('form-input');
@@ -114,8 +120,6 @@ function showResult() {
       }
       $variableRoot.append($row);
     });
-
-    console.log(vars);
 
     $resultRoot.innerHTML = fn(vars);
     $resultRoot.classList.remove('error');
